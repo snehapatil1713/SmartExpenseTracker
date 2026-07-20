@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Smart Expense Tracker</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Navbar -->
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+        <div class="content">
+
+            <!-- Welcome -->
+            <div class="welcome-section">
+
+                <h2>👋 Welcome Back</h2>
+
+                <p>
+                    Manage your finances smarter with AI-powered insights.
+                </p>
+
+            </div>
+
+            <!-- Summary Cards -->
+            <div th:replace="~{fragments/summary-cards :: summaryCards}"></div>
+
+            <!-- Charts -->
+            <div th:replace="~{fragments/charts :: charts}"></div>
+
+            <!-- Recent Transactions -->
+            <div th:replace="~{fragments/recent-transactions :: recentTransactions}"></div>
+
+            <!-- AI Insights -->
+            <div th:replace="~{fragments/ai-insights :: aiInsights}"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const incomeExpenseCtx = document.getElementById('incomeExpenseChart');
+
+if (incomeExpenseCtx) {
+
+    new Chart(incomeExpenseCtx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+
+            datasets: [
+
+                {
+
+                    label: 'Income',
+
+                    data: [50000,48000,62000,54000,70000,65000],
+
+                    backgroundColor: '#22c55e',
+
+                    borderRadius: 8
+
+                },
+
+                {
+
+                    label: 'Expense',
+
+                    data: [25000,28000,30000,27000,35000,32000],
+
+                    backgroundColor: '#ef4444',
+
+                    borderRadius: 8
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false
+
+        }
+
+    });
+
+}
+
+const expenseCategoryCtx = document.getElementById('expenseCategoryChart');
+
+if (expenseCategoryCtx) {
+
+    new Chart(expenseCategoryCtx, {
+
+        type: 'doughnut',
+
+        data: {
+
+            labels: [
+
+                'Food',
+
+                'Shopping',
+
+                'Transport',
+
+                'Bills',
+
+                'Others'
+
+            ],
+
+            datasets: [
+
+                {
+
+                    data: [
+
+                        35,
+
+                        20,
+
+                        15,
+
+                        20,
+
+                        10
+
+                    ],
+
+                    backgroundColor: [
+
+                        '#3b82f6',
+
+                        '#8b5cf6',
+
+                        '#10b981',
+
+                        '#f59e0b',
+
+                        '#ef4444'
+
+                    ]
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    position: 'bottom'
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>

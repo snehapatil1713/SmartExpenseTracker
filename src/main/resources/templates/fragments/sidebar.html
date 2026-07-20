@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="sidebar">
+
+    <div class="sidebar">
+
+        <!-- Logo -->
+        <div class="logo">
+            <i class="bi bi-wallet2"></i>
+            <span>Smart Expense Tracker</span>
+        </div>
+
+        <!-- Menu -->
+        <ul class="menu">
+
+            <!-- Home -->
+            <li>
+                <a th:href="@{/}">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li class="active">
+                <a th:href="@{/dashboard}">
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Income -->
+            <li>
+                <a th:href="@{/income}">
+                    <i class="bi bi-cash-stack"></i>
+                    <span>Income</span>
+                </a>
+            </li>
+
+            <!-- Expenses -->
+            <li>
+                <a th:href="@{/expense}">
+                    <i class="bi bi-wallet-fill"></i>
+                    <span>Expenses</span>
+                </a>
+            </li>
+
+            <!-- Categories -->
+            <li>
+                <a th:href="@{/categories}">
+                    <i class="bi bi-tags-fill"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+
+            <!-- Budget -->
+            <li>
+                <a th:href="@{/budget}">
+                    <i class="bi bi-bullseye"></i>
+                    <span>Budget</span>
+                </a>
+            </li>
+
+            <!-- Reports -->
+            <li>
+                <a th:href="@{/reports}">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+
+            <!-- AI Insights -->
+            <li>
+                <a th:href="@{/ai-insights}">
+                    <i class="bi bi-robot"></i>
+                    <span>AI Insights</span>
+                </a>
+            </li>
+
+            <!-- Profile -->
+            <li>
+                <a th:href="@{/profile}">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <!-- Settings -->
+            <li>
+                <a th:href="@{/settings}">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <!-- Logout -->
+            <li class="logout">
+                <a th:href="@{/logout}">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</body>
+</html>

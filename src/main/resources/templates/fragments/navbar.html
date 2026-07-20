@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="navbar">
+
+    <nav class="top-navbar">
+
+        <!-- Left -->
+        <div class="navbar-left">
+
+            <h3>Dashboard</h3>
+
+        </div>
+
+        <!-- Center -->
+        <div class="navbar-center">
+
+            <div class="search-box">
+
+                <i class="bi bi-search"></i>
+
+                <input
+                        type="text"
+                        placeholder="Search anything...">
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+        <div class="navbar-right">
+
+            <!-- Notification -->
+
+            <div class="nav-icon">
+
+                <i class="bi bi-bell-fill"></i>
+
+            </div>
+
+            <!-- User -->
+
+            <div class="user-profile">
+
+                <div class="user-image">
+
+                    <i class="bi bi-person-fill"></i>
+
+                </div>
+
+                <div class="user-info">
+
+                    <h6>Welcome</h6>
+
+                    <small>User</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>

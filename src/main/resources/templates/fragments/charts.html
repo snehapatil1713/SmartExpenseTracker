@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="charts">
+
+    <div class="row mt-4">
+
+        <!-- Income vs Expense -->
+
+        <div class="col-lg-8">
+
+            <div class="dashboard-card">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h4 class="fw-bold mb-0">
+                        Income vs Expense
+                    </h4>
+
+                    <select class="form-select w-auto">
+
+                        <option>Last 6 Months</option>
+                        <option>Last Year</option>
+
+                    </select>
+
+                </div>
+
+                <div style="height:350px;">
+
+                    <canvas id="incomeExpenseChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Expense Categories -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <h4 class="fw-bold mb-3">
+
+                    Expense Categories
+
+                </h4>
+
+                <div style="height:350px;">
+
+                    <canvas id="expenseCategoryChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

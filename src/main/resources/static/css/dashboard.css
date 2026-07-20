@@ -1,0 +1,346 @@
+/* ===========================
+   Global
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+/* ===========================
+   Layout
+=========================== */
+
+.dashboard-container{
+    display:flex;
+    min-height:100vh;
+}
+
+.main-content{
+    margin-left:260px;
+    width:calc(100% - 260px);
+}
+
+/* ===========================
+   Sidebar
+=========================== */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+    background:linear-gradient(180deg,#4f46e5,#6d28d9);
+    color:#fff;
+    padding:25px 20px;
+    overflow-y:auto;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+.logo i{
+    font-size:30px;
+}
+
+.menu{
+    list-style:none;
+    padding:0;
+}
+
+.menu li{
+    margin-bottom:10px;
+}
+
+.menu li a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:white;
+    padding:14px 16px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.menu li a:hover,
+.menu li.active a{
+    background:rgba(255,255,255,.18);
+}
+
+.menu li i{
+    font-size:20px;
+}
+
+.logout{
+    margin-top:40px;
+}
+
+/* ===========================
+   Navbar
+=========================== */
+
+.top-navbar{
+    background:#fff;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#f1f3f6;
+    padding:10px 15px;
+    border-radius:30px;
+    width:320px;
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    background:transparent;
+    width:100%;
+    margin-left:10px;
+}
+
+.navbar-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.nav-icon{
+    width:45px;
+    height:45px;
+    background:#f1f3f6;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.nav-icon:hover{
+    background:#4f46e5;
+    color:white;
+}
+
+.user-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.user-image{
+    width:45px;
+    height:45px;
+    background:#4f46e5;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+}
+
+/* ===========================
+   Content
+=========================== */
+
+.content{
+    padding:30px;
+}
+
+.welcome-section h2{
+    font-weight:700;
+}
+
+.welcome-section p{
+    color:#666;
+}
+
+/* ===========================
+   Summary Cards
+=========================== */
+
+.summary-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.summary-card:hover{
+    transform:translateY(-6px);
+}
+
+.summary-card i{
+    font-size:32px;
+    color:#4f46e5;
+}
+
+.summary-card h6{
+    margin-top:15px;
+    color:#777;
+}
+
+.summary-card h3{
+    margin-top:10px;
+    font-weight:700;
+}
+
+/* ===========================
+   Dashboard Cards
+=========================== */
+
+.dashboard-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.placeholder-box{
+    margin-top:20px;
+    height:260px;
+    border:2px dashed #d5d8e1;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#888;
+    font-size:18px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:992px){
+
+    .sidebar{
+        width:220px;
+    }
+
+    .main-content{
+        margin-left:220px;
+        width:calc(100% - 220px);
+    }
+
+    .search-box{
+        width:220px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .dashboard-container{
+        flex-direction:column;
+    }
+
+    .main-content{
+        width:100%;
+        margin-left:0;
+    }
+
+    .top-navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+}
+
+/* =====================================
+   Premium Summary Cards
+===================================== */
+
+.summary-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:25px;
+    border-radius:20px;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.summary-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.card-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    color:#fff;
+}
+
+.income-card .card-icon{
+    background:#16a34a;
+}
+
+.expense-card .card-icon{
+    background:#dc2626;
+}
+
+.balance-card .card-icon{
+    background:#2563eb;
+}
+
+.budget-card .card-icon{
+    background:#f59e0b;
+}
+
+.card-content{
+    text-align:right;
+}
+
+.card-content h6{
+    color:#777;
+    margin-bottom:8px;
+}
+
+.card-content h3{
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:8px;
+}

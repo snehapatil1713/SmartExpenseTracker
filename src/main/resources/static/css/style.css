@@ -1,0 +1,23 @@
+body {
+    background: #f5f7fa;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.card-header {
+    background: #0d6efd;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary {
+    border-radius: 8px;
+}
+
+.form-control {
+    border-radius: 8px;
+}
