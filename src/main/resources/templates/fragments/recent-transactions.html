@@ -9,15 +9,25 @@
 
         <div class="d-flex justify-content-between align-items-center mb-4">
 
-            <h4 class="fw-bold mb-0">
-                Recent Transactions
-            </h4>
+    <h4 class="fw-bold mb-0">
+        Recent Transactions
+    </h4>
 
-            <a href="#" class="btn btn-primary btn-sm">
-                View All
-            </a>
+    <div class="d-flex gap-2">
 
-        </div>
+        <a th:href="@{/income}" class="btn btn-success btn-sm">
+            <i class="bi bi-cash-stack"></i>
+            Income
+        </a>
+
+        <a th:href="@{/expense}" class="btn btn-primary btn-sm">
+            <i class="bi bi-wallet2"></i>
+            Expense
+        </a>
+
+    </div>
+
+</div>
 
         <div class="table-responsive">
 
@@ -27,17 +37,11 @@
 
                 <tr>
 
-                    <th>Transaction</th>
-
-                    <th>Category</th>
-
+                    <th>Type</th>
+                    <th>Title</th>
+                    <th>Category / Source</th>
                     <th>Date</th>
-
-                    <th>Amount</th>
-
-                    <th>Status</th>
-
-                    <th class="text-center">Actions</th>
+                    <th class="text-end">Amount</th>
 
                 </tr>
 
@@ -45,185 +49,68 @@
 
                 <tbody>
 
-                <tr>
+                <tr th:if="${#lists.isEmpty(recentTransactions)}">
 
-                    <td>
-                        <strong>Salary</strong>
-                    </td>
-
-                    <td>Income</td>
-
-                    <td>20 Jul 2026</td>
-
-                    <td class="text-success fw-bold">
-                        + ₹50,000
-                    </td>
-
-                    <td>
-
-                        <span class="badge bg-success">
-                            Completed
-                        </span>
-
-                    </td>
-
-                    <td class="text-center">
-
-                        <button class="btn btn-outline-primary btn-sm">
-
-                            <i class="bi bi-eye-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-warning btn-sm">
-
-                            <i class="bi bi-pencil-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-danger btn-sm">
-
-                            <i class="bi bi-trash-fill"></i>
-
-                        </button>
-
+                    <td colspan="5" class="text-center text-muted py-4">
+                        No recent transactions found.
                     </td>
 
                 </tr>
 
-                <tr>
+                <tr th:each="transaction : ${recentTransactions}">
 
-                    <td>
-                        <strong>Grocery Shopping</strong>
-                    </td>
-
-                    <td>Food</td>
-
-                    <td>19 Jul 2026</td>
-
-                    <td class="text-danger fw-bold">
-                        - ₹1,250
-                    </td>
-
+                    <!-- Type -->
                     <td>
 
-                        <span class="badge bg-success">
-                            Completed
+                        <span th:if="${transaction.type == 'Income'}"
+                              class="badge bg-success">
+
+                            <i class="bi bi-arrow-down-circle-fill"></i>
+                            Income
+
+                        </span>
+
+                        <span th:if="${transaction.type == 'Expense'}"
+                              class="badge bg-danger">
+
+                            <i class="bi bi-arrow-up-circle-fill"></i>
+                            Expense
+
                         </span>
 
                     </td>
 
-                    <td class="text-center">
-
-                        <button class="btn btn-outline-primary btn-sm">
-
-                            <i class="bi bi-eye-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-warning btn-sm">
-
-                            <i class="bi bi-pencil-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-danger btn-sm">
-
-                            <i class="bi bi-trash-fill"></i>
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>
-                        <strong>Fuel</strong>
-                    </td>
-
-                    <td>Transport</td>
-
-                    <td>18 Jul 2026</td>
-
-                    <td class="text-danger fw-bold">
-                        - ₹800
-                    </td>
-
+                    <!-- Title -->
                     <td>
 
-                        <span class="badge bg-success">
-                            Completed
+                        <strong th:text="${transaction.title}">
+                            Title
+                        </strong>
+
+                    </td>
+
+                    <!-- Category -->
+                    <td th:text="${transaction.category}">
+                        Category
+                    </td>
+
+                    <!-- Date -->
+                    <td th:text="${#temporals.format(transaction.date,'dd MMM yyyy')}">
+                        20 Jul 2026
+                    </td>
+
+                    <!-- Amount -->
+                    <td class="text-end fw-bold">
+
+                        <span th:if="${transaction.type == 'Income'}"
+                              class="text-success"
+                              th:text="'+ ₹' + ${#numbers.formatDecimal(transaction.amount,1,2)}">
                         </span>
 
-                    </td>
-
-                    <td class="text-center">
-
-                        <button class="btn btn-outline-primary btn-sm">
-
-                            <i class="bi bi-eye-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-warning btn-sm">
-
-                            <i class="bi bi-pencil-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-danger btn-sm">
-
-                            <i class="bi bi-trash-fill"></i>
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>
-                        <strong>Netflix</strong>
-                    </td>
-
-                    <td>Entertainment</td>
-
-                    <td>17 Jul 2026</td>
-
-                    <td class="text-danger fw-bold">
-                        - ₹499
-                    </td>
-
-                    <td>
-
-                        <span class="badge bg-success">
-                            Completed
+                        <span th:if="${transaction.type == 'Expense'}"
+                              class="text-danger"
+                              th:text="'- ₹' + ${#numbers.formatDecimal(transaction.amount,1,2)}">
                         </span>
-
-                    </td>
-
-                    <td class="text-center">
-
-                        <button class="btn btn-outline-primary btn-sm">
-
-                            <i class="bi bi-eye-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-warning btn-sm">
-
-                            <i class="bi bi-pencil-fill"></i>
-
-                        </button>
-
-                        <button class="btn btn-outline-danger btn-sm">
-
-                            <i class="bi bi-trash-fill"></i>
-
-                        </button>
 
                     </td>
 

@@ -71,148 +71,130 @@
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
+<script th:inline="javascript">
 
-const incomeExpenseCtx = document.getElementById('incomeExpenseChart');
+    /* ---------- Income vs Expense ---------- */
 
-if (incomeExpenseCtx) {
+    const incomeChartData = /*[[${incomeChart}]]*/ {};
+    const expenseChartData = /*[[${expenseChart}]]*/ {};
+    const categoryChartData = /*[[${categoryChart}]]*/ {};
 
-    new Chart(incomeExpenseCtx, {
+    const incomeExpenseCtx = document.getElementById("incomeExpenseChart");
 
-        type: 'bar',
+    if (incomeExpenseCtx) {
 
-        data: {
+        new Chart(incomeExpenseCtx, {
 
-            labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+            type: "bar",
 
-            datasets: [
+            data: {
 
-                {
+                labels: Object.keys(incomeChartData),
 
-                    label: 'Income',
+                datasets: [
 
-                    data: [50000,48000,62000,54000,70000,65000],
+                    {
+                        label: "Income",
+                        data: Object.values(incomeChartData),
+                        backgroundColor: "#22c55e",
+                        borderRadius: 8
+                    },
 
-                    backgroundColor: '#22c55e',
+                    {
+                        label: "Expense",
+                        data: Object.values(expenseChartData),
+                        backgroundColor: "#ef4444",
+                        borderRadius: 8
+                    }
 
-                    borderRadius: 8
+                ]
 
-                },
+            },
 
-                {
+            options: {
 
-                    label: 'Expense',
+                responsive: true,
 
-                    data: [25000,28000,30000,27000,35000,32000],
+                maintainAspectRatio: false,
 
-                    backgroundColor: '#ef4444',
+                plugins: {
 
-                    borderRadius: 8
+                    legend: {
 
-                }
+                        position: "top"
 
-            ]
-
-        },
-
-        options: {
-
-            responsive: true,
-
-            maintainAspectRatio: false
-
-        }
-
-    });
-
-}
-
-const expenseCategoryCtx = document.getElementById('expenseCategoryChart');
-
-if (expenseCategoryCtx) {
-
-    new Chart(expenseCategoryCtx, {
-
-        type: 'doughnut',
-
-        data: {
-
-            labels: [
-
-                'Food',
-
-                'Shopping',
-
-                'Transport',
-
-                'Bills',
-
-                'Others'
-
-            ],
-
-            datasets: [
-
-                {
-
-                    data: [
-
-                        35,
-
-                        20,
-
-                        15,
-
-                        20,
-
-                        10
-
-                    ],
-
-                    backgroundColor: [
-
-                        '#3b82f6',
-
-                        '#8b5cf6',
-
-                        '#10b981',
-
-                        '#f59e0b',
-
-                        '#ef4444'
-
-                    ]
-
-                }
-
-            ]
-
-        },
-
-        options: {
-
-            responsive: true,
-
-            maintainAspectRatio: false,
-
-            plugins: {
-
-                legend: {
-
-                    position: 'bottom'
+                    }
 
                 }
 
             }
 
-        }
+        });
 
-    });
+    }
 
-}
+    /* ---------- Expense Category ---------- */
+
+    const expenseCategoryCtx = document.getElementById("expenseCategoryChart");
+
+    if (expenseCategoryCtx) {
+
+        new Chart(expenseCategoryCtx, {
+
+            type: "doughnut",
+
+            data: {
+
+                labels: Object.keys(categoryChartData),
+
+                datasets: [
+
+                    {
+
+                        data: Object.values(categoryChartData),
+
+                        backgroundColor: [
+
+                            "#3b82f6",
+                            "#8b5cf6",
+                            "#10b981",
+                            "#f59e0b",
+                            "#ef4444",
+                            "#06b6d4",
+                            "#84cc16",
+                            "#f97316"
+
+                        ]
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+
+                        position: "bottom"
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
 
 </script>
-
 </body>
 
 </html>

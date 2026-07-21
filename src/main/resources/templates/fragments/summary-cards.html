@@ -13,23 +13,23 @@
             <div class="summary-card income-card">
 
                 <div class="card-icon">
-
                     <i class="bi bi-cash-stack"></i>
-
                 </div>
 
                 <div class="card-content">
 
                     <h6>Total Income</h6>
 
-                    <h3>₹50,000</h3>
+                    <h3 th:text="'₹' + ${#numbers.formatDecimal(totalIncome,1,2)}">
+                        ₹0.00
+                    </h3>
 
                     <small class="text-success">
-
                         <i class="bi bi-arrow-up"></i>
-
-                        +12% this month
-
+                        This Month:
+                        <span th:text="'₹' + ${#numbers.formatDecimal(monthlyIncome,1,2)}">
+                            ₹0.00
+                        </span>
                     </small>
 
                 </div>
@@ -44,23 +44,23 @@
             <div class="summary-card expense-card">
 
                 <div class="card-icon">
-
                     <i class="bi bi-wallet2"></i>
-
                 </div>
 
                 <div class="card-content">
 
                     <h6>Total Expense</h6>
 
-                    <h3>₹20,000</h3>
+                    <h3 th:text="'₹' + ${#numbers.formatDecimal(totalExpense,1,2)}">
+                        ₹0.00
+                    </h3>
 
                     <small class="text-danger">
-
                         <i class="bi bi-arrow-up"></i>
-
-                        +5% this month
-
+                        This Month:
+                        <span th:text="'₹' + ${#numbers.formatDecimal(monthlyExpense,1,2)}">
+                            ₹0.00
+                        </span>
                     </small>
 
                 </div>
@@ -69,27 +69,25 @@
 
         </div>
 
-        <!-- Balance -->
+        <!-- Current Balance -->
         <div class="col-lg-3 col-md-6">
 
             <div class="summary-card balance-card">
 
                 <div class="card-icon">
-
                     <i class="bi bi-bank"></i>
-
                 </div>
 
                 <div class="card-content">
 
                     <h6>Current Balance</h6>
 
-                    <h3>₹30,000</h3>
+                    <h3 th:text="'₹' + ${#numbers.formatDecimal(currentBalance,1,2)}">
+                        ₹0.00
+                    </h3>
 
                     <small class="text-primary">
-
                         Available Balance
-
                     </small>
 
                 </div>
@@ -98,27 +96,25 @@
 
         </div>
 
-        <!-- Budget -->
+        <!-- Savings Rate -->
         <div class="col-lg-3 col-md-6">
 
             <div class="summary-card budget-card">
 
                 <div class="card-icon">
-
-                    <i class="bi bi-bullseye"></i>
-
+                    <i class="bi bi-piggy-bank"></i>
                 </div>
 
                 <div class="card-content">
 
-                    <h6>Monthly Budget</h6>
+                    <h6>This Month Savings</h6>
 
-                    <h3>80%</h3>
+                    <h3 th:text="'₹' + ${#numbers.formatDecimal(monthlyIncome - monthlyExpense,1,2)}">
+                        ₹0.00
+                    </h3>
 
                     <small class="text-warning">
-
-                        Budget Utilized
-
+                        Monthly Savings
                     </small>
 
                 </div>

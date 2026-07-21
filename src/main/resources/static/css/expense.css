@@ -1,0 +1,88 @@
+/* ===========================
+   Expense Module Styles
+=========================== */
+
+.card {
+    border-radius: 12px;
+}
+
+.card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+}
+
+.alert {
+    border-radius: 8px;
+}
+
+.badge {
+    font-size: 0.85rem;
+}
+
+.card-header h3,
+.card-header h5 {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+
+    .content {
+        padding: 15px;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    .btn-sm {
+        margin-bottom: 5px;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start !important;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+}
