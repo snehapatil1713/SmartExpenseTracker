@@ -18,6 +18,10 @@ public class UserServiceImpl implements UserService {
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    // ===========================
+    // Register User
+    // ===========================
+
     @Override
     public User registerUser(User user) {
 
@@ -31,8 +35,49 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    // ===========================
+    // Get User
+    // ===========================
+
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+
+    // ===========================
+    // Update Profile
+    // ===========================
+
+    @Override
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    // ===========================
+    // Change Password
+    // ===========================
+
+    @Override
+    public boolean changePassword(String email,
+                                  String currentPassword,
+                                  String newPassword) {
+
+        User user = getUserByEmail(email);
+
+        if (user == null) {
+            return false;
+        }
+
+        // Verify current password
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            return false;
+        }
+
+        // Save new encrypted password
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+
+        return true;
+    }
+
 }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Insights | Smart Expense Tracker</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet"
+          th:href="@{/css/dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Navbar -->
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+        <div class="content">
+
+            <!-- Header -->
+            <div class="mb-4">
+
+                <h2 class="fw-bold">
+                    <i class="bi bi-robot text-primary"></i>
+                    AI Financial Insights
+                </h2>
+
+                <p class="text-muted">
+                    Personalized financial insights generated from your monthly income, expenses, and budget.
+                </p>
+
+            </div>
+
+            <!-- No Insights -->
+            <div th:if="${#lists.isEmpty(insights)}">
+
+                <div class="alert alert-info text-center">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    No insights available yet. Add some income and expense records to receive AI insights.
+
+                </div>
+
+            </div>
+
+            <!-- Insights -->
+            <div class="row" th:if="${!#lists.isEmpty(insights)}">
+
+                <div class="col-lg-6 mb-4"
+                     th:each="insight : ${insights}">
+
+                    <div class="dashboard-card h-100">
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+
+                            <h5 class="fw-bold mb-0"
+                                th:text="${insight.title}">
+                            </h5>
+
+                            <span class="badge fs-6"
+
+                                  th:classappend="
+                                      ${insight.alertType == 'success'} ? ' bg-success' :
+                                      (${insight.alertType == 'warning'} ? ' bg-warning text-dark' :
+                                      (${insight.alertType == 'danger'} ? ' bg-danger' :
+                                      ' bg-primary'))"
+
+                                  th:text="${insight.alertType}">
+                            </span>
+
+                        </div>
+
+                        <p class="text-muted mb-0"
+                           th:text="${insight.message}">
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

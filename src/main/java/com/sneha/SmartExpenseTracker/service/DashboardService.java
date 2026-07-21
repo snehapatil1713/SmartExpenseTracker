@@ -2,11 +2,17 @@ package com.sneha.SmartExpenseTracker.service;
 
 import java.util.Map;
 
-import com.sneha.SmartExpenseTracker.entity.User;
+import java.util.List;
 
 import java.util.List;
 
+import com.sneha.SmartExpenseTracker.entity.User;
+
 import com.sneha.SmartExpenseTracker.dto.TransactionDTO;
+
+import com.sneha.SmartExpenseTracker.dto.AIInsightDTO;
+
+import com.sneha.SmartExpenseTracker.dto.MonthlyReportDTO;
 
 public interface DashboardService {
 
@@ -19,6 +25,16 @@ public interface DashboardService {
     Double getMonthlyIncome(User user);
 
     Double getMonthlyExpense(User user);
+    
+    Double getCurrentMonthBudget(User user);
+
+    Double getRemainingBudget(User user);
+
+    Double getBudgetUsagePercentage(User user);
+
+    String getBudgetStatus(User user);
+    
+    MonthlyReportDTO getMonthlyReport(User user);
    
     // Chart Data
     Map<String, Double> getLastSixMonthsIncome(User user);
@@ -28,5 +44,7 @@ public interface DashboardService {
     Map<String, Double> getExpenseCategoryData(User user);
     
     List<TransactionDTO> getRecentTransactions(User user);
+    
+    List<AIInsightDTO> getAIInsights(User user);
 
 }

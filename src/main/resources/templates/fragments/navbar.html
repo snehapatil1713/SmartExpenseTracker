@@ -11,53 +11,154 @@
         <div class="navbar-left">
 
             <h3 th:text="${pageTitle != null ? pageTitle : 'Dashboard'}">
-			    Dashboard
-			</h3>
-        </div>
-
-        <!-- Center -->
-        <div class="navbar-center">
-
-            <div class="search-box">
-
-                <i class="bi bi-search"></i>
-
-                <input
-                        type="text"
-                        placeholder="Search anything...">
-
-            </div>
+                Dashboard
+            </h3>
 
         </div>
 
         <!-- Right -->
         <div class="navbar-right">
 
-            <!-- Notification -->
+            <!-- ================= Notifications ================= -->
 
-            <div class="nav-icon">
+            <div class="dropdown">
 
-                <i class="bi bi-bell-fill"></i>
+                <button class="btn nav-icon position-relative"
+                        type="button"
+                        data-bs-toggle="dropdown">
+
+                    <i class="bi bi-bell-fill"></i>
+
+                    <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                        4
+
+                    </span>
+
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                    <li>
+                        <h6 class="dropdown-header">
+                            Notifications
+                        </h6>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            ✅ Expense Added Successfully
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            💰 Budget Updated
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            👤 Profile Updated
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            🔐 Password Changed
+                        </a>
+                    </li>
+
+                </ul>
 
             </div>
 
-            <!-- User -->
+            <!-- ================= User Dropdown ================= -->
 
-            <div class="user-profile">
+            <div class="dropdown">
 
-                <div class="user-image">
+                <button class="btn dropdown-toggle d-flex align-items-center border-0 bg-transparent"
+                        data-bs-toggle="dropdown">
 
-                    <i class="bi bi-person-fill"></i>
+                    <!-- Profile Image -->
 
-                </div>
+                    <img th:if="${loggedInUser != null and loggedInUser.profileImage != null}"
+                         th:src="@{'/uploads/' + ${loggedInUser.profileImage}}"
+                         class="rounded-circle me-2"
+                         width="45"
+                         height="45"
+                         style="object-fit:cover;">
 
-                <div class="user-info">
+                    <!-- Default Icon -->
 
-                    <h6>Welcome</h6>
+                    <div th:if="${loggedInUser == null or loggedInUser.profileImage == null}"
+                         class="user-image">
 
-                    <small>User</small>
+                        <i class="bi bi-person-fill"></i>
 
-                </div>
+                    </div>
+
+                    <div class="text-start ms-2">
+
+                        <h6 class="mb-0">
+
+                            Welcome
+
+                        </h6>
+
+                        <small th:text="${loggedInUser.fullName}">
+                            User
+                        </small>
+
+                    </div>
+
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                    <li>
+
+                        <a class="dropdown-item"
+                           th:href="@{/profile}">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            My Profile
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a class="dropdown-item"
+                           th:href="@{/settings}">
+
+                            <i class="bi bi-gear-fill"></i>
+
+                            Settings
+
+                        </a>
+
+                    </li>
+
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li>
+
+                        <a class="dropdown-item text-danger"
+                           th:href="@{/logout}">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                            Logout
+
+                        </a>
+
+                    </li>
+
+                </ul>
 
             </div>
 

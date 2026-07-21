@@ -32,6 +32,17 @@ public class DashboardController {
         model.addAttribute("currentBalance", dashboardService.getCurrentBalance(user));
         model.addAttribute("monthlyIncome", dashboardService.getMonthlyIncome(user));
         model.addAttribute("monthlyExpense", dashboardService.getMonthlyExpense(user));
+        model.addAttribute("currentBudget",
+                dashboardService.getCurrentMonthBudget(user));
+
+        model.addAttribute("remainingBudget",
+                dashboardService.getRemainingBudget(user));
+
+        model.addAttribute("budgetUsage",
+                dashboardService.getBudgetUsagePercentage(user));
+
+        model.addAttribute("budgetStatus",
+                dashboardService.getBudgetStatus(user));
 
         // Charts
         model.addAttribute("incomeChart", dashboardService.getLastSixMonthsIncome(user));
@@ -42,6 +53,13 @@ public class DashboardController {
                 "recentTransactions",
                 dashboardService.getRecentTransactions(user)
         );
+        
+     // AI Insights
+        model.addAttribute(
+                "aiInsights",
+                dashboardService.getAIInsights(user)
+        );
+
 
         return "dashboard";
     }

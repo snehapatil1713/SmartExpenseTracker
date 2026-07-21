@@ -10,11 +10,8 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
 
             <h4 class="fw-bold mb-0">
-
                 <i class="bi bi-robot text-primary"></i>
-
                 AI Insights
-
             </h4>
 
             <span class="badge bg-primary">
@@ -23,55 +20,24 @@
 
         </div>
 
-        <div class="alert alert-success mb-3">
+        <div th:if="${#lists.isEmpty(aiInsights)}"
+             class="alert alert-secondary">
 
-            <h6 class="fw-bold">
-
-                💰 Savings Opportunity
-
-            </h6>
-
-            <p class="mb-0">
-
-                You spent 18% more on Food this month.
-                Reducing restaurant expenses could save around
-                <strong>₹2,500</strong>.
-
-            </p>
+            No insights available.
 
         </div>
 
-        <div class="alert alert-warning mb-3">
+        <div th:each="insight : ${aiInsights}"
+             th:class="'alert alert-' + ${insight.alertType} + ' mb-3'">
 
-            <h6 class="fw-bold">
-
-                📊 Budget Alert
-
+            <h6 class="fw-bold"
+                th:text="${insight.title}">
+                Title
             </h6>
 
-            <p class="mb-0">
-
-                Your Entertainment budget is already
-                <strong>82%</strong> utilized.
-
-            </p>
-
-        </div>
-
-        <div class="alert alert-info">
-
-            <h6 class="fw-bold">
-
-                📈 Prediction
-
-            </h6>
-
-            <p class="mb-0">
-
-                Based on your current spending pattern,
-                your estimated savings this month will be
-                <strong>₹18,700</strong>.
-
+            <p class="mb-0"
+               th:text="${insight.message}">
+                Message
             </p>
 
         </div>
